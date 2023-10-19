@@ -1,0 +1,74 @@
+<h3>Current customer: {{ currentCustomer }}</h3>
+<p>Title : {{title}}</p>
+<div><img alt="item" src="{{itemImageUrl}}"></div>
+---------------------------------------------------
+<h3>Properties Binding</h3>
+<div>
+    <img alt="item 2" [src]="itemImageUrl" />
+</div>
+<table [ngClass]="classTable">
+    <thead>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Row 1 - colum 1</td>
+            <td [colSpan]="1+1">Row 1 - colum 2+3</td>
+        </tr>
+        <tr>
+            <td>Row 2 - colum 1</td>
+            <td>Row 2 - colum 2</td>
+            <td>Row 2 - colum 3</td>
+        </tr>
+        <tr>
+            <td>Row 3 - colum 1</td>
+            <td>Row 3 - colum 2</td>
+            <td>Row 3 - colum 3</td>
+        </tr>
+        <tr>
+            <td>Row 3 - colum 1</td>
+            <td [attr.colspan]="1+1">Row 3 - colum 2 + 3</td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <button type="button" class="btn btn-primary" (click)="OnAbleButton(isUnchanged)">Enable/Disable Button</button>
+     : {{isUnchanged}} -
+    <button class="btn btn-primary" type="button" [disabled]="isUnchanged">Button</button>
+    <p></p>
+</div>
+<div>
+    <!-- create and set an aria attribute for assistive technology -->
+    <button type="button" class="btn btn-primary" [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+    <p></p>
+</div>
+
+<hr />
+
+<h2>Styling precedence</h2>
+
+<h3>Basic specificity</h3>
+
+<!-- The `class.special` binding overrides any value for the `special` class in `classExpression`.  -->
+<div [class.special]="isSpecial" [class]="classExpression">Some text.</div>
+
+<!-- The `style.border` binding overrides any value for the `border` property in `styleExpression`.  -->
+<div [style.border]="border" [style]="styleExpression">Some text.</div>
+
+<hr/>
+
+<h1 id="two-way">Two-way Binding</h1>
+<div id="two-way-1">
+  <app-sizer [(size)]="fontSizePx"></app-sizer>
+  <div [style.font-size.px]="fontSizePx">Resizable Text</div>
+  <label for="font-size">FontSize (px): <input id="font-size" [(ngModel)]="fontSizePx"></label>
+</div>
+<br>
+<div id="two-way-2">
+  <h2>De-sugared two-way binding</h2>
+  <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
+</div>

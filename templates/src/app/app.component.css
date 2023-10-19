@@ -1,0 +1,10 @@
+.special {
+    background-color: black;
+    color: #ffffff;
+    margin-bottom: .5rem;
+    padding: 1rem;
+  }
+  
+  .clearance {
+    border: 1rem double #57d1ff;
+  }
